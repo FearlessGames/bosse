@@ -14,7 +14,7 @@ public class FightBoss : MonoBehaviour {
 		
 	}
 
-	public void Fight() {
-		print("Fight!");
+	public void Fight(string bossId) {
+		print("Fight " + bossId + "!");
 	}
 }
