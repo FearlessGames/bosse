@@ -60,6 +60,7 @@ public class Paperdoll : MonoBehaviour {
 
 	public void SetItemLevel(Slot slot, int itemLevel) {
 		items [slot] = itemLevel;
+		UpdateLabels ();
 	}
 
 }
