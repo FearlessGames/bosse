@@ -31,6 +31,16 @@ public class Paperdoll : MonoBehaviour {
 	};
 
 	public Text headText;
+	public Text neckText;
+	public Text backText;
+	public Text chestText;
+	public Text wristsText;
+	public Text handsText;
+	public Text waistText;
+	public Text legsText;
+	public Text feetText;
+	public Text ringText;
+
 	private SortedDictionary<Slot, int> items = new SortedDictionary<Slot, int>();
 
 	public Paperdoll () {
@@ -48,6 +58,15 @@ public class Paperdoll : MonoBehaviour {
 
 	private void UpdateLabels ()  {
 		headText.text = items [Slot.HEAD].ToString ();
+		neckText.text = items [Slot.NECK].ToString ();
+		backText.text = items [Slot.BACK].ToString ();
+		chestText.text = items [Slot.CHEST].ToString ();
+		wristsText.text = items [Slot.WRISTS].ToString ();
+		handsText.text = items [Slot.HANDS].ToString ();
+		waistText.text = items [Slot.WAIST].ToString ();
+		legsText.text = items [Slot.LEGS].ToString ();
+		feetText.text = items [Slot.FEET].ToString ();
+		ringText.text = items [Slot.RING].ToString ();
 	}
 
 	public int GetItemLevel(Slot slot) {
