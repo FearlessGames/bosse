@@ -27,8 +27,7 @@ public class Paperdoll : MonoBehaviour {
 		WAIST,
 		LEGS,
 		FEET,
-		RING1,
-		RING2
+		RING
 	};
 
 	public Text headText;
@@ -44,10 +43,7 @@ public class Paperdoll : MonoBehaviour {
 		items.Add (Slot.WAIST, 1);
 		items.Add (Slot.LEGS, 1);
 		items.Add (Slot.FEET, 1);
-		items.Add (Slot.RING1, 1);
-		items.Add (Slot.RING2, 1);
-
-
+		items.Add (Slot.RING, 1);
 	}
 
 	private void UpdateLabels ()  {
