@@ -1524,6 +1524,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paperdoll: {fileID: 350989269}
   message: {fileID: 1610113011}
+  fight1: {fileID: 803543537}
+  fight2: {fileID: 2097323819}
 --- !u!1 &1812010001
 GameObject:
   m_ObjectHideFlags: 0
