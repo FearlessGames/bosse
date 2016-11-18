@@ -9,6 +9,7 @@ public class FightBoss : MonoBehaviour {
 	public Button fight1;
 	public Button fight2;
 	private string currentBoss;
+	public int secondsToWaitForFight;
 
 
 	// Use this for initialization
@@ -26,7 +27,7 @@ public class FightBoss : MonoBehaviour {
 		print("Fight " + bossId + "!");
 		currentBoss = bossId;
 		DisableButtons ();
-		Invoke ("DistributeLoot", 3);
+		Invoke ("DistributeLoot", secondsToWaitForFight);
 	}
 
 	private void DistributeLoot() {
