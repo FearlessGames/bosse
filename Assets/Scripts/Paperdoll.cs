@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,6 +41,7 @@ public class Paperdoll : MonoBehaviour {
 	public Text legsText;
 	public Text feetText;
 	public Text ringText;
+	public Text avgText;
 
 	private SortedDictionary<Slot, int> items = new SortedDictionary<Slot, int>();
 
@@ -67,6 +69,7 @@ public class Paperdoll : MonoBehaviour {
 		legsText.text = items [Slot.LEGS].ToString ();
 		feetText.text = items [Slot.FEET].ToString ();
 		ringText.text = items [Slot.RING].ToString ();
+		UpdateAvg ();
 	}
 
 	public int GetItemLevel(Slot slot) {
@@ -76,6 +79,12 @@ public class Paperdoll : MonoBehaviour {
 	public void SetItemLevel(Slot slot, int itemLevel) {
 		items [slot] = itemLevel;
 		UpdateLabels ();
+	}
+
+	private void UpdateAvg() {
+		int sum = items.Sum (entry => entry.Value);
+		double avgLevel = (double)sum / items.Count;
+		avgText.text = "Average gear level: " + avgLevel;
 	}
 
 }
