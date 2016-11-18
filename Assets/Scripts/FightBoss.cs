@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FightBoss : MonoBehaviour {
 	public Paperdoll paperdoll;
+	public Text message;
 
 
 	// Use this for initialization
@@ -57,6 +59,10 @@ public class FightBoss : MonoBehaviour {
 
 		int oldLevel = paperdoll.GetItemLevel (slot);
 		int newLevel = oldLevel + Random.Range(0, 5);
+		if (message.text == "Here be text") {
+			message.text = "";
+		}
+		message.text = "Got " + slot.ToString () + " of level " + newLevel + "\n" + message.text;
 		paperdoll.SetItemLevel (slot, newLevel);
 	}
 }
