@@ -9,6 +9,7 @@ public class FightBoss : MonoBehaviour {
 	public Button fight1;
 	public Button fight2;
 	private string currentBoss;
+	private bool wonLastFight;
 	public int secondsToWaitForFight;
 
 
@@ -26,11 +27,27 @@ public class FightBoss : MonoBehaviour {
 	public void Fight(string bossId) {
 		print("Fight " + bossId + "!");
 		currentBoss = bossId;
-		DisableButtons ();
-		Invoke ("DistributeLoot", secondsToWaitForFight);
+		DisableButtons();
+		Invoke ("PerformFight", secondsToWaitForFight);
+
 	}
 
-	private void DistributeLoot() {
+	private void PerformFight() {
+		bool wonLastFight = GetFightOutcome();
+		if (wonLastFight) {
+			DistributeLoot(currentBoss);
+		} else {
+			AddMessage("You were defeated! Try again");
+		}
+
+		EnableButtons();
+	}
+
+	private bool GetFightOutcome() {
+		return Random.Range(1, 10) > 3;
+	}
+
+	private void DistributeLoot(string currentBoss) {
 		Paperdoll.Slot slot = Paperdoll.Slot.RING;
 		if (currentBoss == "boss1") {
 			int slotIndex = Random.Range(0,3);
@@ -70,14 +87,19 @@ public class FightBoss : MonoBehaviour {
 
 		int oldLevel = paperdoll.GetItemLevel (slot);
 		int newLevel = oldLevel + Random.Range(0, 5);
+
+		AddMessage("Got " + slot.ToString () + " of level " + newLevel);
+
+		paperdoll.SetItemLevel (slot, newLevel);
+
+	}
+
+	private void AddMessage(string messageToAdd) {
 		if (message.text == "Here be text") {
 			message.text = "";
 		}
-		message.text = "Got " + slot.ToString () + " of level " + newLevel + "\n" + message.text;
+		message.text = messageToAdd + "\n" + message.text;
 		message.enabled = true;
-
-		paperdoll.SetItemLevel (slot, newLevel);
-		EnableButtons ();
 	}
 
 	public void EnableButtons() {
