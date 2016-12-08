@@ -47,16 +47,17 @@ public class Paperdoll : MonoBehaviour {
 	private float averageLevel = 0;
 
 	public Paperdoll () {
-		items.Add (Slot.HEAD, 1);
-		items.Add (Slot.NECK, 1);
-		items.Add (Slot.CHEST, 1);
-		items.Add (Slot.BACK, 1);
-		items.Add (Slot.WRISTS, 1);
-		items.Add (Slot.HANDS, 1);
-		items.Add (Slot.WAIST, 1);
-		items.Add (Slot.LEGS, 1);
-		items.Add (Slot.FEET, 1);
-		items.Add (Slot.RING, 1);
+		int startingLevel = 100;
+		items.Add (Slot.HEAD, startingLevel);
+		items.Add (Slot.NECK, startingLevel);
+		items.Add (Slot.CHEST, startingLevel);
+		items.Add (Slot.BACK, startingLevel);
+		items.Add (Slot.WRISTS, startingLevel);
+		items.Add (Slot.HANDS, startingLevel);
+		items.Add (Slot.WAIST, startingLevel);
+		items.Add (Slot.LEGS, startingLevel);
+		items.Add (Slot.FEET, startingLevel);
+		items.Add (Slot.RING, startingLevel);
 	}
 
 	private void UpdateLabels ()  {

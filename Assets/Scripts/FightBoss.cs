@@ -35,9 +35,9 @@ public class FightBoss : MonoBehaviour {
 	private void PerformFight() {
 		float currentBossLevel = 0;
 		if (currentBoss == "boss1") {
-			currentBossLevel = 3;
+			currentBossLevel = 95;
 		} else if (currentBoss == "boss2") {
-			currentBossLevel = 5;
+			currentBossLevel = 140;
 		}
 		bool wonLastFight = GetFightOutcome(currentBossLevel, paperdoll.GetAverageLevel());
 		if (wonLastFight) {
@@ -50,8 +50,8 @@ public class FightBoss : MonoBehaviour {
 	}
 
 	private bool GetFightOutcome(float currentBossLevel, float playerLevel) {
-		float steepness = 0.7f;
-		float chance = GetLogisticValue(10f, currentBossLevel - 1.5f, steepness, playerLevel);
+		float steepness = 0.09f;
+		float chance = GetLogisticValue(10f, currentBossLevel, steepness, playerLevel);
 		print("CurrentBossLevel: " + currentBossLevel + ", playerLevel: " + playerLevel + ", steepness: " + steepness);
 		print("Fighting boss with chance " + chance);
 		return Random.Range(0, 10) < chance;
