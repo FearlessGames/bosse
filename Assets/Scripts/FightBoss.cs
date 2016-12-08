@@ -60,7 +60,7 @@ public class FightBoss : MonoBehaviour {
 	private void DistributeLoot(string currentBoss) {
 		Paperdoll.Slot slot = Paperdoll.Slot.RING;
 		if (currentBoss == "boss1") {
-			int slotIndex = Random.Range(0,3);
+			int slotIndex = (int) Mathf.Round(Random.Range(-0.5f,3.49f));
 			switch (slotIndex) {
 			case 0:
 				slot = Paperdoll.Slot.HEAD;
@@ -78,7 +78,7 @@ public class FightBoss : MonoBehaviour {
 
 
 		} else if (currentBoss == "boss2") {
-			int slotIndex = Random.Range(0,3);
+			int slotIndex = (int) Mathf.Round(Random.Range(-0.5f,3.49f));
 			switch (slotIndex) {
 			case 0:
 				slot = Paperdoll.Slot.CHEST;
@@ -95,13 +95,15 @@ public class FightBoss : MonoBehaviour {
 			}
 		}
 
-		int oldLevel = paperdoll.GetItemLevel (slot);
-		int newLevel = oldLevel + Random.Range(0, 5);
-
-		AddMessage("Got " + slot.ToString () + " of level " + newLevel);
-
-		paperdoll.SetItemLevel (slot, newLevel);
-
+		float averageLevel = paperdoll.GetAverageLevel();
+		int newLevel = (int) Mathf.Round(averageLevel + Random.Range(0f, averageLevel * 0.1f));
+		int oldLevel = paperdoll.GetItemLevel(slot);
+		if (newLevel > oldLevel) {
+			paperdoll.SetItemLevel (slot, newLevel);
+			AddMessage("Got " + slot.ToString() + " of level " + newLevel);
+		} else {
+			AddMessage("Got " + slot.ToString() + " of level " + newLevel + " which is worse than what you have");
+		}
 	}
 
 	private void AddMessage(string messageToAdd) {
