@@ -44,6 +44,7 @@ public class Paperdoll : MonoBehaviour {
 	public Text avgText;
 
 	private SortedDictionary<Slot, int> items = new SortedDictionary<Slot, int>();
+	private float averageLevel = 0;
 
 	public Paperdoll () {
 		items.Add (Slot.HEAD, 1);
@@ -83,8 +84,12 @@ public class Paperdoll : MonoBehaviour {
 
 	private void UpdateAvg() {
 		int sum = items.Sum (entry => entry.Value);
-		double avgLevel = (double)sum / items.Count;
-		avgText.text = "Average gear level: " + avgLevel;
+		averageLevel = (float)sum / items.Count;
+		avgText.text = "Average gear level: " + averageLevel;
+	}
+
+	public float GetAverageLevel() {
+		return averageLevel;
 	}
 
 }

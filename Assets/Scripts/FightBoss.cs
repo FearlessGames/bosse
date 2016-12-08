@@ -33,7 +33,13 @@ public class FightBoss : MonoBehaviour {
 	}
 
 	private void PerformFight() {
-		bool wonLastFight = GetFightOutcome();
+		float currentBossLevel = 0;
+		if (currentBoss == "boss1") {
+			currentBossLevel = 3;
+		} else if (currentBoss == "boss2") {
+			currentBossLevel = 5;
+		}
+		bool wonLastFight = GetFightOutcome(currentBossLevel, paperdoll.GetAverageLevel());
 		if (wonLastFight) {
 			DistributeLoot(currentBoss);
 		} else {
@@ -43,8 +49,12 @@ public class FightBoss : MonoBehaviour {
 		EnableButtons();
 	}
 
-	private bool GetFightOutcome() {
-		return Random.Range(1, 10) > 3;
+	private bool GetFightOutcome(float currentBossLevel, float playerLevel) {
+		float steepness = 0.7f;
+		float chance = GetLogisticValue(10f, currentBossLevel - 1.5f, steepness, playerLevel);
+		print("CurrentBossLevel: " + currentBossLevel + ", playerLevel: " + playerLevel + ", steepness: " + steepness);
+		print("Fighting boss with chance " + chance);
+		return Random.Range(0, 10) < chance;
 	}
 
 	private void DistributeLoot(string currentBoss) {
@@ -110,6 +120,10 @@ public class FightBoss : MonoBehaviour {
 	public void DisableButtons() {
 		fight1.interactable = false;
 		fight2.interactable = false;
+	}
+
+	private float GetLogisticValue(float maxValue, float midPoint, float steepness, float currentPoint) {
+		return maxValue / (1 + Mathf.Exp(-steepness * (currentPoint - midPoint)));
 	}
 
 
