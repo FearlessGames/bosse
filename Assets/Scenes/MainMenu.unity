@@ -1413,7 +1413,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 173}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 250, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1664206246
 GameObject:
@@ -1602,7 +1602,7 @@ MonoBehaviour:
   message: {fileID: 1610113011}
   fight1: {fileID: 803543537}
   fight2: {fileID: 2097323819}
-  secondsToWaitForFight: 3
+  secondsToWaitForFight: 1
 --- !u!1 &1812010001
 GameObject:
   m_ObjectHideFlags: 0
