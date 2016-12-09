@@ -35,9 +35,9 @@ public class FightBoss : MonoBehaviour {
 	private void PerformFight() {
 		float currentBossLevel = 0;
 		if (currentBoss == "boss1") {
-			currentBossLevel = 95;
+			currentBossLevel = 90;
 		} else if (currentBoss == "boss2") {
-			currentBossLevel = 140;
+			currentBossLevel = 120;
 		}
 		bool wonLastFight = GetFightOutcome(currentBossLevel, paperdoll.GetAverageLevel());
 		if (wonLastFight) {
