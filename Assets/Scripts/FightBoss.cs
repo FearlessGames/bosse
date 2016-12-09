@@ -43,7 +43,7 @@ public class FightBoss : MonoBehaviour {
 		if (wonLastFight) {
 			DistributeLoot(currentBoss);
 		} else {
-			AddMessage("You were defeated! Try again");
+			AddMessage("<color=red>You were defeated! Try again</color>");
 		}
 
 		EnableButtons();
@@ -102,7 +102,7 @@ public class FightBoss : MonoBehaviour {
 			paperdoll.SetItemLevel (slot, newLevel);
 			AddMessage("Got " + slot.ToString() + " of level " + newLevel);
 		} else {
-			AddMessage("Got " + slot.ToString() + " of level " + newLevel + " which is worse than what you have");
+			AddMessage("<color=aqua>Got " + slot.ToString() + " of level " + newLevel + " which is worse than what you have</color>");
 		}
 	}
 
